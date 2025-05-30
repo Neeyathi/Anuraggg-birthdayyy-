@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Anurag</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="heart-canvas"></canvas>
+  <div class="container">
+    <h1>Happy Birthday Anurag ❤️🎀</h1>
+    <p class="subtitle">This is our story, through my eyes…</p>
+
+    <section class="card">
+      <h2>Our Journey</h2>
+      <ul>
+        <li><strong>27 Dec 2024:</strong> The first time we texted. The day that changed everything.</li>
+        <li><strong>7 March Hackathon:</strong> We weren’t just building code, we were building connection.</li>
+        <li><strong>9 March Summit:</strong> My heart found comfort on your shoulder.</li>
+        <li><strong>9 March:</strong> First walk together, but hopefully the first of many miles.</li>
+        <li><strong>27 March 2025:</strong> First gift that you gave, bracelet which I wear everyday.</li>
+        <li><strong>14 May 2025:</strong> You said it… and my heart screamed yes.</li>
+        <li><strong>15 May 2025:</strong> First movie date, best best best day.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Things I Love About You</h2>
+      <ul>
+        <li>Your laugh</li>
+        <li>Your obsession with Spiderman 🕷️</li>
+        <li>Your love for SRH</li>
+        <li>Your Tattoo</li>
+        <li>Your kind heart</li>
+        <li>Your hair</li>
+        <li>Your voice</li>
+        <li>Your every "i love you" </li>
+        <li>Your handsome, handsomer, handsomest face</li>
+        <li>Your love for me</li>
+        <li>Your love for math</li>
+        <li>Your patience and sensibilty to deal with all my mood swings</li>
+        <li>Your wit and smartness</li>
+        <li>Your trust towards me</li>
+        <li>Your "i love you neeyathi" gesture to lose everytime we play thumb fight</li>
+        <li>Your music taste</li>
+        <li>Your red shirt</li>
+        <li>Your cutue cutue baby pictures</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Birthday Message</h2>
+      <p>
+        You are my favorite person, Anurag. Every moment with you feels like home.<br />
+        I love you more than words, more than Spiderman, more than Anirudh’s music…<br />
+        <strong>Happy Birthday, my love.</strong>
+      </p>
+    </section>
+
+    <section class="card spiderman">
+      <h2>🕸️ Spidey Mode Activated</h2>
+      <p>Click the Spidey button!</p>
+      <button onclick="shootWeb()">🕷️ Spiderman Web</button>
+    </section>
+  </div>
+
+  <script>
+    // Floating heart animation
+    const canvas = document.getElementById("heart-canvas");
+    const ctx = canvas.getContext("2d");
+    let hearts = [];
+    resize();
+
+    window.addEventListener("resize", resize);
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createHeart() {
+      const x = Math.random() * canvas.width;
+      const y = canvas.height + Math.random() * 100;
+      const size = Math.random() * 10 + 5;
+      const speed = Math.random() * 1 + 0.5;
+      hearts.push({ x, y, size, speed });
+    }
+
+    function drawHearts() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hearts.forEach((heart, i) => {
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(255, 0, 100, 0.7)";
+        ctx.arc(heart.x, heart.y, heart.size, 0, Math.PI * 2);
+        ctx.fill();
+        heart.y -= heart.speed;
+        if (heart.y < -10) hearts.splice(i, 1);
+      });
+    }
+
+    function animateHearts() {
+      createHeart();
+      drawHearts();
+      requestAnimationFrame(animateHearts);
+    }
+    animateHearts();
+
+    // Spiderman Web (fun effect)
+    function shootWeb() {
+  alert("🕸️ Web deployed! You're now protected by Spiderman!");
+  window.open("https://open.spotify.com/playlist/6G3LyVsi9PIWfgse80ZZrH?si=d1d564b0de6c4f48&pt=242f980ce9e62cdf24391919af3223d6", "_blank");
+}
+
+
+  </script>
+</body>
+</html>
